@@ -1,6 +1,5 @@
 package dev.gui.menu;
 
-import dev.Controleur;
 import dev.metier.Connexion;
 
 import javax.imageio.ImageIO;
