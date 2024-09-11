@@ -2,5 +2,8 @@ import dev.Controleur;
 
 public class Main
 {
-	public static void main(String args[]){new Controleur();}
+	public static void main(String args[])
+	{
+		new Controleur();
+	}
 }
