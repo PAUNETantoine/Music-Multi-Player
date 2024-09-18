@@ -1,19 +1,33 @@
 package dev.metier;
 
+import dev.Controleur;
+
+import java.util.Arrays;
+
 public class Connexion
 {
 
 	private String nomUtilisateur;
-	private char[] mdp;
+	private String mdp;
 	private boolean estConnecter;
 
 	public Connexion(String nomUtilisateur, char[] mdp)
 	{
 		this.nomUtilisateur = nomUtilisateur;
-		this.mdp = mdp;
+		this.mdp = "";
 
+		for (char c : mdp)
+		{
+			this.mdp = this.mdp + c;
+		}
 
-		this.estConnecter = true;
+		this.essaieMdp();
+	}
+
+	public boolean essaieMdp()
+	{
+		Controleur.ServerOut.println("connexion " + this.nomUtilisateur + " " + this.mdp);
+		return true;
 	}
 
 

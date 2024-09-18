@@ -9,17 +9,19 @@ import java.awt.event.WindowEvent;
 
 public class Menu extends JFrame
 {
-	private JPanel pnlCentral;
+	private MenuPanel pnlCentral;
+	public static int width = 1000;
 
 	public Menu(int code)
 	{
 		this.setSize(1000,800);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.setTitle("Music Multi Player - Connexion");
 
 
 		//Définition du panel
-		this.pnlCentral = new menuPanel(code);
+		this.pnlCentral = new MenuPanel(code);
 
 		//Ajout des éléments au panel / Frame
 		this.add(this.pnlCentral);
@@ -45,6 +47,12 @@ public class Menu extends JFrame
 				System.exit(0);
 			}
 		});
+	}
+
+
+	public MenuPanel getMenuPanel()
+	{
+		return this.pnlCentral;
 	}
 
 
