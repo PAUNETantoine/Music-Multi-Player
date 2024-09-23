@@ -18,7 +18,6 @@ public class Controleur
 	public static BufferedReader ServerIn;
 	private int code;
 	private String[] args;
-	private Player musicPlayer;
 
 	public Controleur()
 	{
@@ -60,10 +59,9 @@ public class Controleur
 			ServerIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			ServerOut = new PrintWriter(socket.getOutputStream(), true);
 
-			while (ServerIn.readLine() != null)
+			String reponse;
+			while ((reponse = ServerIn.readLine()) != null)
 			{
-				String reponse = ServerIn.readLine();
-
 				System.out.println("Réponse du serveur : " + reponse);
 
 
@@ -78,8 +76,9 @@ public class Controleur
 							System.out.println("Inscription réussie");
 							this.menu.getMenuPanel().getInscriptionFrame().dispose();
 						}else{
-							System.out.println("Nom utilisateur déjà pris");
+							menu.getMenuPanel().setLblErreurI("nom d'utilisateur déjà pris");
 						}
+						break;
 					}
 					case "connexion" : {
 						if(args[1].contains("true"))
@@ -91,7 +90,9 @@ public class Controleur
 							System.out.println("Nom d'utilisateur ou mot de passe incorrect");
 							menu.getMenuPanel().setLblErreur("Nom d'utilisateur ou mot de passe incorrect.");
 						}
+						break;
 					}
+					default: break;
 				}
 
 			}
