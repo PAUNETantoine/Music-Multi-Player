@@ -22,6 +22,7 @@ public class MenuPanel extends JPanel implements ActionListener
 	private JLabel lblErreur;
 	private JLabel lblTxtNomUser;
 	private JLabel lblTxtMdp;
+	private JLabel lblErreurI;
 
 	private JButton btnConnexion;
 	private JButton btnInscription;
@@ -125,7 +126,7 @@ public class MenuPanel extends JPanel implements ActionListener
 		ImageIcon imgSrc				= new ImageIcon("src/files/images/Music Multi Player Logo1.png");
 		JLabel imgLogo					= new JLabel(imgSrc);
 
-		JLabel lblErreurI 				= new JLabel();
+		this.lblErreurI 				= new JLabel();
 		JLabel lblTxtNomUserI			= new JLabel("Nom d'utilisateur : ");
 		JTextField txtNomUtilisateurI 	= new JTextField();
 		JLabel lblTxtMdpI				= new JLabel("Mot de passe :");
@@ -167,14 +168,20 @@ public class MenuPanel extends JPanel implements ActionListener
 				if(txtMotDePasseConfI.getText().equals(txtMotDePasseI.getText()))
 				{
 					Controleur.ServerOut.println("inscription " + txtNomUtilisateurI.getText() + " " + txtMotDePasseConfI.getText());
-
-
-
 				}else{
-					setLblErreur("Vos mots de passes ne correspondent pas.");
+					lblErreurI.setText("Vos mots de passe ne correspondent pas");
+					lblErreurI.setVisible(true);
+					lblErreurI.setForeground(Color.ORANGE);
 				}
 			}
 		});
+	}
+
+	public void setLblErreurI(String erreur)
+	{
+		this.lblErreurI.setText(erreur);
+		this.lblErreurI.setForeground(Color.ORANGE);
+		this.lblErreurI.setVisible(true);
 	}
 
 	public void paintComponent(Graphics g)
